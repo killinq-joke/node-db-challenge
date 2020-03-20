@@ -9,7 +9,18 @@ projectRouter.get("/", (req, res) => {
         res.status(200).json(response)
     })
     .catch(err => {
-        res.status(500).json("error")
+        res.status(500).json(err)
+    })
+})
+
+projectRouter.get("/:id", (req, res) => {
+    const {id} = req.params
+    helpers.getProjectById(id)
+    .then(response => {
+        res.status(200).json(response)
+    })
+    .catch(err => {
+        res.status(500).json(err)
     })
 })
 
