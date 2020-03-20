@@ -14,7 +14,14 @@ resourceRouter.get("/", (req, res) => {
 })
 
 resourceRouter.post("/", (req, res) => {
-    
+    const resource = req.body
+    helpers.postResource(resource)
+    .then(response => {
+        res.status(201).json(response)
+    })
+    .catch(err => {
+        res.status(500).json(err)
+    })
 })
 
 module.exports = resourceRouter
