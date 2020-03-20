@@ -2,8 +2,8 @@ exports.up = function(knex) {
   return knex.schema
     .createTable("projects", tbl => {
       tbl.increments();
-      tbl.string("name").notNullable();
-      tbl.string("description");
+      tbl.string("name", 24).notNullable();
+      tbl.string("description", 128);
       tbl
         .boolean("completed")
         .notNullable()
@@ -11,13 +11,13 @@ exports.up = function(knex) {
     })
     .createTable("resources", tbl => {
       tbl.increments();
-      tbl.string("name").notNullable();
-      tbl.string("description");
+      tbl.string("name", 24).notNullable();
+      tbl.string("description", 128);
     })
     .createTable("tasks", tbl => {
       tbl.increments();
-      tbl.string("description");
-      tbl.string("notes");
+      tbl.string("description", 128);
+      tbl.string("notes", 64);
       tbl
         .boolean("completed")
         .notNullable()
